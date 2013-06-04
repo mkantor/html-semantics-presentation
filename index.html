@@ -2,11 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=1024, user-scalable=no">
 
 	<title>Semantic HTML</title>
-	
+
 	<!-- Required stylesheet -->
 	<link rel="stylesheet" href="core/deck.core.css">
 	
@@ -20,6 +19,27 @@
 
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
 	<link rel="stylesheet" href="themes/style/swiss.css">
+	<style>
+		#html5-semantics-presentation dfn {
+			font-weight: bold;
+		}
+		#html5-semantics-presentation dfn:after {
+				font-weight: normal;
+				color: #888;
+				content: " —";
+		}
+		#html5-semantics-presentation .definition {
+			text-align: center;
+			font-size: larger;
+		}
+		#html5-semantics-presentation iframe {
+			margin-bottom: 0;
+			margin-top: 1.5em;
+		}
+		#html5-semantics-presentation iframe + a.example {
+			font-size: 0.5em;
+		}
+	</style>
 	
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 	<link rel="stylesheet" href="themes/transition/horizontal-slide.css">
@@ -27,7 +47,7 @@
 	<!-- Required Modernizr file -->
 	<script src="modernizr.custom.js"></script>
 </head>
-<body class="deck-container">
+<body id="html5-semantics-presentation" class="deck-container">
 
 <!-- Begin slides. Just make elements with a class of slide. -->
 
@@ -36,11 +56,152 @@
 </section>
 
 <section class="slide">
-	<h1>Content</h1>
+	<h1>What Is "Semantic HTML" Anyway?</h1>
 </section>
 
 <section class="slide">
-	<h1>Here</h1>
+	<h2><img src="images/what-does-it-mean.jpg" alt="What Does It Mean?"></h2>
+	<p class="definition"><dfn>semantic</dfn> relating to meaning in language or logic.</p>
+</section>
+
+<section class="slide">
+	<h2>Choosing the right elements/attributes for the content</h2>
+	<ul>
+		<li>
+				Every HTML element and attribute has a specified meaning
+				<ul>
+					<li>example: <a href="http://www.w3.org/TR/html51/forms.html#the-output-element">the <code>&lt;output&gt;</code> element</a></li>
+				</ul>
+		</li>
+		<li>HTML should be readable by <strong>humans and machines</strong></li>
+		<li>
+			Don't think in terms of "what does this element look like/do"
+			<ul>
+				<li>Behavior/presentation can be changed with CSS/JS</li>
+				<li>Instead, think about what elements <em>mean</em></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h1>Why Semantics Matter</h1>
+</section>
+
+<section class="slide">
+	<h2>Readable Code Is <strong>Awesome</strong></h2>
+
+	<p>This is true in any language.</p>
+
+	<iframe width="100%" height="300" src="http://jsfiddle.net/mkantor/mDDxn/6/embedded/result,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+	<a class="example" href="http://fiddle.jshell.net/mkantor/mDDxn/6/show/light/">Open result</a>
+
+	<iframe width="100%" height="300" src="http://jsfiddle.net/mkantor/N6dbN/4/embedded/result,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+	<a class="example" href="http://fiddle.jshell.net/mkantor/N6dbN/4/show/light/">Open result</a>
+</section>
+
+<section class="slide">
+	<h2>HTML Sticks Around</h2>
+	<p>After a chunk of HTML is built, CSS, JavaScript, and other external things come to rely on a specific DOM.</p>
+	<ul>
+		<li>This makes it harder to change in the future</li>
+		<li>Much easier to get it right the first time</li>
+		<li>This also means that ugly HTML can spawn ugly CSS and JS</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>When User Agents Can Understand Your Content, <strong>Magic Happens</strong></h2>
+	<ul>
+		<li>
+			Crawlers/SEO
+			<ul>
+				<li>Example: if Google can tell what parts of your page are important, your search result snippet will be nicer
+			</ul>
+		</li>
+		<li>Screen readers and other accessibility software</li>
+		<li>Tools like <a href="http://www.readability.com">Readability</a></li>
+		<li>
+			Browsers
+			<ul>
+				<li><code>&lt;input type="text"&gt;</code> vs <code>&lt;input type="email"&gt;</code></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h1>How Do I Write Semantic HTML?</h1>
+</section>
+
+<section class="slide">
+	<h2>Element Awareness</h2>
+	<p>
+		Read up on what elements are available, what they mean, what attributes mean, etc.
+	</p>
+	<ul>
+		<li>
+			<a href="http://html5doctor.com">HTML5 Doctor</a>
+		</li>
+		<li>
+			<a href="http://www.w3.org/TR/html51/">HTML Specification</a> (HTML 5.1 Working Draft was published <em>today</em>!)
+		</li>
+		<li>
+			<a href="https://developer.mozilla.org/">MDN</a>
+		</li>
+		<li>
+			Soon: <a href="http://docs.webplatform.org/">Web Platform Docs</a>
+		</li>
+	</ul>
+	<p>
+		Google is your friend.
+	</p>
+</section>
+
+<section class="slide">
+	<h2>It's A Subjective Thing</h2>
+	<p>
+		People may have different opinions about what is "more semantic", and that's okay.
+	</p>
+</section>
+
+<section class="slide">
+	<h2>Some Heuristics</h2>
+	<ul>
+		<li>
+			Less code is usually better. This is true in pretty much any language.
+			<ul>
+				<li>Mastering CSS can help reduce the need for wrapper divs, layout tables, and other unsemantic weirdness.</li>
+			</ul>
+		</li>
+		<li>Is the site readable/usable without any CSS/JavaScript?</li>
+		<li>Ideally HTML should be as readable as plaintext (or better)
+			<ul>
+				<li>Element names/attributes should add value for  humans as well as machines</li>
+			</ul>
+		<li>Validate!</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Resources</h2>
+	<ul>
+		<li>
+			<a href="http://html5doctor.com">HTML5 Doctor</a>
+		</li>
+		<li>
+			<a href="http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf">HTML5 Sectioning Element Flowchart</a>
+		</li>
+		<li>
+			<a href="https://code.google.com/p/h5o/">HTML5 Outliner</a>
+		</li>
+		<li>
+			<a href="http://www.w3.org/TR/html51/">HTML Specification</a>
+		</li>
+		<li>
+			Soon: <a href="http://docs.webplatform.org/">Web Platform Docs</a>
+		</li>
+	</ul>
 </section>
 
 <!-- End slides. -->
